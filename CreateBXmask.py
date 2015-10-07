@@ -27,13 +27,13 @@ for line in data:
     if len(tokenized_line) == 9:
         try:
             start_bx = 1+(int(tokenized_line[3].strip(), 10)-1)/10
-            end_bx = start_bx+int(tokenized_line[5].strip(), 10)-1
+            end_bx = start_bx+int(tokenized_line[5].strip(), 10)
 	    if start_bx-1 > lowest_bx:
                 # Adding 1 to lower edge as we're blocking bunch train+1
                 # Subtracting 2 to upper edge for similar reason
-                bx_ranges.append(str(lowest_bx+opts.BXpre) + "-" + str(start_bx-1-opts.BXpost))
+                bx_ranges.append(str(lowest_bx+opts.BXpost) + "-" + str(start_bx-1-opts.BXpre))
             if end_bx > lowest_bx:
-                lowest_bx = end_bx+1
+                lowest_bx = end_bx
         except ValueError:
             continue
 
