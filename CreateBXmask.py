@@ -37,7 +37,7 @@ for line in data:
         except ValueError:
             continue
 
-bx_ranges.append(str(lowest_bx) + "-" + "2563")
+bx_ranges.append(str(lowest_bx) + "-" + "3563")
 
 print "Bunch crossing mask excluding all bunch trains as well as +/-1 bunch around them:"
 print " ".join(bx_ranges)
