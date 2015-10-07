@@ -26,12 +26,12 @@ for line in data:
     tokenized_line = line.split(',')
     if len(tokenized_line) == 9:
         try:
-            start_bx = 1+(int(tokenized_line[3].strip(), 10)-1)/10
-            end_bx = start_bx+int(tokenized_line[5].strip(), 10)
-	    if start_bx-1 > lowest_bx:
+            start_bx = (int(tokenized_line[3].strip(), 10)-1)/10
+            end_bx = 1+start_bx+int(tokenized_line[5].strip(), 10)+opts.BXpost
+	    if start_bx-opts.BXpre > lowest_bx:
                 # Adding 1 to lower edge as we're blocking bunch train+1
                 # Subtracting 2 to upper edge for similar reason
-                bx_ranges.append(str(lowest_bx+opts.BXpost) + "-" + str(start_bx-1-opts.BXpre))
+                bx_ranges.append(str(lowest_bx) + "-" + str(start_bx-opts.BXpre))
             if end_bx > lowest_bx:
                 lowest_bx = end_bx
         except ValueError:
